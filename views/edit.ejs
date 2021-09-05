@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SIPK</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="/js/script.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="header-logo">SIPK 1.0</a>
+    </header>
+    <div class="container">
+      <div class="container-header">
+        <h1>Edit Matakuliah</h1>
+      </div>
+      <div class="item-form-wrapper">
+        <form action="/update/<%= item.id %>" method="post">
+          <input name="namaMatkul" type="text" value="<%= item.nama %>" required>
+          <p class="form-label">Jumlah SKS</p>
+          <input name="sksMatkul" type="number" min="0" onchange="updateSKS(this.value)" required>
+          <p class="form-label">Nilai dalam Indeks</p>
+          <select name="nilaiIndeks" onchange="updateIndeks(this.value)" required>
+            <option value="K">K</option>
+            <option value="A">A</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+          </select>
+          <p class="form-label">Bobot Nilai</p>
+          <input id="hasilIndeks" name="nilaiBobot" readonly required>
+          <p class="form-label">Total (Bobot x SKS)</p>
+          <input id="hasilAkhir" name="totalNilai" readonly required>
+          <input type="submit" value="Perbarui">
+        </form>
+      </div>
+      <a href="/index" class="cancel-button"></span>Kembali</a>
+    </div>
+  </body>
+</html>
+

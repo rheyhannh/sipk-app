@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SIPK</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+  </head>
+  <body>
+    <header>
+      <a href="/" class="header-logo">SIPK 1.0</a>
+    </header>
+    <div class="container">
+      <div class="container-header">
+        <h1>IPK Manager</h1>
+        <a href="/new" class="new-button">+ Tambah Matkul</a>
+      </div>
+      <div class="index-table-wrapper">
+        <div class="table-head">
+          <span class="id-column">No</span>
+          <span class="nama-column">Mata Kuliah</span>
+          <span class="sks-column">SKS</span>
+          <span class="indeks-column">Indeks</span>
+          <span class="nilai-column">Bobot</span>
+          <span class="total-column">Nilai</span>
+        </div>
+        <ul class="table-body">
+          <% matkul.forEach((item) => { %>
+            <li>
+              <div class="item-data">
+                <span class="id-column"><%= item.id %></span>
+                <span class="nama-column"><%= item.nama %></span>
+                <span class="sks-column"><%= item.sks %></span>
+                <span class="indeks-column"><%= item.indeks %></span>
+                <span class="nilai-column"><%= item.nilai %></span>
+                <span class="total-column"><%= item.total %></span>
+              </div>
+              <div class="item-menu">
+                <form action="/delete/<%= item.id %>" method="post">
+                  <!-- <input type="submit" value="Hapus"> -->
+                  <input type="image" alt="Hapus" src="/images/delete.png" width="20" height="20">
+                </form>
+                <a href="/edit/<%= item.id %>">
+                  <img src="/images/edit.png" alt="Edit" width="20" height="20">
+                </a>
+
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+        <div class="table-footer-total">
+          <% var jumlahSKS = 0;  %>
+          <% var jumlahnilai = 0;  %>
+          <% matkul.forEach(function(jumlahin){ %>
+            <% jumlahSKS += jumlahin.sks %> 
+            <% jumlahnilai += jumlahin.total %> 
+          <% }); %>
+          <span class="id-column"></span>
+          <span class="nama-column">TOTAL</span>
+          <span class="sks-column"><%= jumlahSKS %></span>
+          <span class="indeks-column">-</span>
+          <span class="nilai-column">-</span>
+          <span class="total-column"><%= jumlahnilai %></span>
+        </div>
+        <div class="table-footer-ipk">
+          <% var ipk = jumlahnilai / jumlahSKS;  %>
+          <% var ipkfix = parseFloat(ipk).toFixed(2);  %>
+          <span class="id-column"></span>
+          <span class="nama-column">IPK</span>
+          <span class="ipk-column"><%= ipkfix %></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

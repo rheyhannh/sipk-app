@@ -1,0 +1,38 @@
+/* Untuk Smartphone */
+@media all and (max-width: 700px) {
+    .id-column {
+        width: 55px;
+      }
+      
+      .nama-column {
+        width: 150px;
+      }
+      
+      .sks-column {
+        width: 60px;
+      }
+      
+      .indeks-column {
+        width: 60px;
+      }
+      
+      .nilai-column {
+        width: 60px;
+      }
+      
+      .total-column {
+        width: 60px;
+      }
+      
+      .ipk-column {
+        width: 230px;
+      }
+
+      .item-menu form {
+        width: 50px;
+      }
+
+      .item-menu a {
+        width: 45px;
+      }
+}
